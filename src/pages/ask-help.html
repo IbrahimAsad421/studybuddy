@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBuddy - Ask for Help</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-700 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span class="font-bold text-xl">StudyBuddy</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="border-b-2 border-white">Ask for Help</a>
+                <a href="#" class="hover:text-blue-200">Help Requests</a>
+                <a href="#" class="hover:text-blue-200">My Profile</a>
+            </div>
+            <div class="flex space-x-2">
+                <button class="bg-black hover:bg-gray-800 text-white px-4 py-1 rounded">Sign In</button>
+                <button class="bg-white hover:bg-gray-100 text-blue-700 px-4 py-1 rounded">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto flex-grow px-4 py-8">
+        <h1 class="text-3xl text-blue-600 text-center font-bold mb-8">Ask for Help</h1>
+
+        <!-- Form Container -->
+        <div class="max-w-2xl mx-auto bg-gray-50 rounded-lg p-6 shadow-md">
+            <h2 class="text-xl font-semibold mb-2 text-gray-800">Post Your Question</h2>
+            <p class="text-gray-600 mb-6">Provide details about your question to get the best help from other students</p>
+
+            <form id="askHelpForm">
+                <!-- Question Title -->
+                <div class="mb-4">
+                    <label for="questionTitle" class="block text-sm font-medium text-gray-700 mb-2">Question Title</label>
+                    <input 
+                        type="text" 
+                        id="questionTitle" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="E.g., How do I solve this quadratic equation?">
+                </div>
+
+                <!-- Detailed Description -->
+                <div class="mb-4">
+                    <label for="detailedDescription" class="block text-sm font-medium text-gray-700 mb-2">Detailed Description</label>
+                    <textarea 
+                        id="detailedDescription" 
+                        rows="6" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Explain your question in detail. Include any relevant information that might help others understand your problem."></textarea>
+                </div>
+
+                <!-- Subject -->
+                <div class="mb-4">
+                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                    <div class="relative">
+                        <select 
+                            id="subject" 
+                            class="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option selected disabled>Select a subject</option>
+                            <option>Mathematics</option>
+                            <option>Physics</option>
+                            <option>Chemistry</option>
+                            <option>Biology</option>
+                            <option>Computer Science</option>
+                            <option>Literature</option>
+                            <option>History</option>
+                            <option>Economics</option>
+                            <option>Other</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Attachment -->
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Attach Files (Optional)</label>
+                    <div class="flex items-center justify-between p-2 border border-gray-300 rounded-md">
+                        <span class="text-gray-500 truncate flex-grow" id="fileNameDisplay">No file selected</span>
+                        <label for="fileInput" class="flex items-center cursor-pointer text-blue-500 hover:text-blue-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                            </svg>
+                            Attach File
+                        </label>
+                        <input id="fileInput" type="file" class="hidden" />
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Supported formats: PDF, Word, Images (max 10MB)</p>
+                </div>
+
+                <!-- Help Type -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Help Type</label>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <input type="radio" id="writtenAnswer" name="helpType" class="h-4 w-4 text-blue-600" checked>
+                            <label for="writtenAnswer" class="ml-2 text-gray-700">Written Answer</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="liveHelpSession" name="helpType" class="h-4 w-4 text-blue-600">
+                            <label for="liveHelpSession" class="ml-2 text-gray-700">Live Help Session</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+                    Submit Question
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-4 border-t border-gray-300">
+        <div class="container mx-auto px-4 text-center text-gray-600 text-sm">
+            &copy; 2025 StudyBuddy. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
